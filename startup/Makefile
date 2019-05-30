@@ -28,9 +28,7 @@ LFLAGS = -static -T ld.scr -L.
 .SUFFIXES: .c .o
 .SUFFIXES: .s .o
 
-all: $(SRC)
-	$(AS) -mmcu=avr5 $(SRC)
-
+all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET) $(CFLAGS) $(LFLAGS)
@@ -51,13 +49,13 @@ image: $(TARGET).hex
 #	/usr/core/avrdude-6.3/bin/avrdude -V -F -p m328p -C ./avrdude.conf -c arduino -b 115200 -Uflash:w:$(TARGET).hex -P$(PORT)
 
 
-dump: a.out
+dump: $(TARGET).elf
 	$(OBJDMP) -d $^
 
-sym: a.out
+sym: $(TARGET).elf
 	$(NM) $^
 
-run: a.out
+run: $(TARGET).elf
 	$(GDB) $^
 
 clean:
