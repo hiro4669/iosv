@@ -13,7 +13,7 @@ GDB = $(BINDIR)/avr-gdb
 PORT=/dev/cu.usbmodem1411 # PORT
 
 
-OBJS = startup.o 
+OBJS = startup.o main.o
 
 TARGET = startup
 SRC = $(TARGET).s
