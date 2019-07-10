@@ -4,5 +4,6 @@
 int putc(unsigned char c);
 unsigned char getc();
 int puts(char *str);
+int putxval(unsigned long value);
 
 #endif

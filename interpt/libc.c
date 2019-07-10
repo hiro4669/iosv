@@ -17,3 +17,18 @@ int puts(char *str) {
     }
     return 0;
 }
+
+
+int putxval(unsigned long value) {
+    char buf[9];
+    char *p;
+    p = buf + sizeof(buf) - 1;
+    *(p--) = '\0';
+    while (value) {
+        *(p--) = "0123456789abcdef"[value & 0xf];
+        value >>= 4;
+    }
+    puts(p + 1);
+    putc('\n');
+    return 0;
+}

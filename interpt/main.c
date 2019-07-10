@@ -9,6 +9,7 @@ void vector_init();
 
 void t0a() {
     puts("ABC\n");
+    putxval(16);
 	return;
 }
 
