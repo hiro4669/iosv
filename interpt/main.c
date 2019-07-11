@@ -8,8 +8,11 @@
 void vector_init();
 
 void t0a() {
-    puts("ABC\n");
-    putxval(16);
+    extern char _userstack;
+    char *ts = &_userstack;
+    puts("ABCD\n");
+//    putxval(16);
+    putxval((unsigned long)ts);
 	return;
 }
 
@@ -24,8 +27,7 @@ int main(void) {
 	INTR_ENABLE;
 
 	while (1) {
-//		++i;
-//		putc('\n');
+		puts("a\n");
 	}
 
 	return 0;
