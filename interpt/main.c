@@ -7,12 +7,13 @@
 
 void vector_init();
 
-void t0a() {
+void t0a(unsigned int sp) {
     extern char _userstack;
     char *ts = &_userstack;
-    puts("ABCD\n");
+//    puts("ABCD\n");
 //    putxval(16);
-    putxval((unsigned long)ts);
+//    putxval((unsigned long)ts);
+    putxval((unsigned long)sp);
 	return;
 }
 
@@ -27,7 +28,7 @@ int main(void) {
 	INTR_ENABLE;
 
 	while (1) {
-		puts("a\n");
+//		puts("a\n");
 	}
 
 	return 0;

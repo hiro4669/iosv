@@ -115,14 +115,14 @@ intr_time:
         push r0
         in   r31, 0x3f ; SREG
         push r31
-        in   r22, 0x3d ; save current sp low  to r22
-        in   r23, 0x3e ; save current sp high to r23
+        in   r24, 0x3d ; save current sp low  to r22
+        in   r25, 0x3e ; save current sp high to r23
         ldi  r28, lo8(_userstack) ; save userstack lo byte to r28
         ldi  r29, hi8(_userstack) ; save userstack hi byte to r29
         out  0x3d, r28 ; save userstack low   ; change sp to userstack
         out  0x3e, r29 ; save userstack high
-        push r22
-        push r23
+        push r24
+        push r25
         eor  r1, r1
 
         rcall t0a
