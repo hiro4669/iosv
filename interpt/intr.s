@@ -117,18 +117,18 @@ intr_time:
         push r31
         in   r24, 0x3d ; save current sp low  to r22
         in   r25, 0x3e ; save current sp high to r23
-        ldi  r28, lo8(_userstack) ; save userstack lo byte to r28
-        ldi  r29, hi8(_userstack) ; save userstack hi byte to r29
-        out  0x3d, r28 ; save userstack low   ; change sp to userstack
-        out  0x3e, r29 ; save userstack high
+        ldi  r28, lo8(_intrstack) ; save intrrstack lo byte to r28
+        ldi  r29, hi8(_intrstack) ; save intrstack hi byte to r29
+        out  0x3d, r28 ; save intrstack low   ; change sp to intrstack
+        out  0x3e, r29 ; save intrstack high
         push r24
         push r25
         eor  r1, r1
 
         rcall t0a
 
-        pop r29        ; pop old sp hi  from userstack
-        pop r28        ; pop old sp low from userstack
+        pop r29        ; pop old sp hi  from intrstack
+        pop r28        ; pop old sp low from intrstack
         out 0x3d, r28  ; set sp low
         out 0x3e, r29  ; set sp high   -> change sp to original
         pop r31        ; restore SREG to r31

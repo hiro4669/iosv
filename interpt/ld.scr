@@ -18,6 +18,7 @@ MEMORY
 */
 	ram(rwx)	: o = 0x800100, l = 0x800600 - 0x800100
     userstack(rw)   : o = 0x800600, l = 0x000000
+    intrstack(rw)   : o = 0x800700, l = 0x000000
 	bootstack(rw)	: o = 0x8007fc, l = 0x000000
 }
 
@@ -72,7 +73,11 @@ SECTIONS
     .userstack : {
         _userstack = .;
     } > userstack
-    
+
+    .intrstack : {
+        _intrstack = .;
+    } > intrstack
+
 	.bootstack : {
 		 _bootstack = .;
 	} > bootstack
