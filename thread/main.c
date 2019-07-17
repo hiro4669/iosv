@@ -18,6 +18,7 @@ typedef struct {
 } context_t;
 
 
+static int idx = 0;
 static context_t *current = NULL;
 static context_t contexts[1];
 
@@ -43,8 +44,21 @@ void t0a(unsigned int sp) {
 	return;
 }
 
+void handle(unsigned int sp) {
+//    putxval((unsigned long)sp);
+    if (idx == 0) {
+        idx = 1;
+        puts("0\n");
+    } else {
+        idx = 0;
+        puts("1\n");
+    }
+}
+
 void test_t() {
-    puts("Hello\n");
+    while (1) {
+        puts("Hello\n");
+    }
 }
 
 void thread_end() {
@@ -98,17 +112,20 @@ int main(void) {
 	serial_init();
 
     thread_create();
+	timer_init();
+
+	INTR_ENABLE;
     if (current != NULL) {
-        puts("current go\n");
+//        puts("current go\n");
         dispatch(&current->sp);
     }
 
-//	timer_init();
 
-	INTR_ENABLE;
+
+
 
 	while (1) {
-		puts("main\n");
+        puts("main\n");
 	}
 
 	return 0;

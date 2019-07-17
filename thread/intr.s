@@ -125,7 +125,7 @@ intr_time:
         push r25
         eor  r1, r1
 
-        rcall t0a
+        rcall handle
 
         pop r29        ; pop old sp hi  from intrstack
         pop r28        ; pop old sp low from intrstack
