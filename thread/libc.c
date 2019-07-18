@@ -4,6 +4,9 @@ int putc(unsigned char c) {
 	if (c == '\n') {
 		serial_send_byte('\r');
 	}
+
+//    if (c == 'C') return serial_send_byte('P');
+
 	return serial_send_byte(c);
 }
 
