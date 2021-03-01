@@ -7,11 +7,9 @@ int flg = 1;
 
 int wait(int seed) {
     int i;
-    int rand = 1;
     for (i = seed; i < seed+32000; ++i) {
-	rand++;
     }
-    return rand;
+    return i;
 }
 
 
